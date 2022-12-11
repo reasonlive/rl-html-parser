@@ -1,0 +1,41 @@
+{
+  "name": "rl-html-parser",
+  "version": "1.0.0",
+  "description": "Parser for HTML pages",
+  "main": "index.js",
+  "author": {
+    "name": "Reason Live",
+    "email": "digitmind@protonmail.com"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/reasonlive/rl-html-parser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reasonlive/rl-html-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reasonlive/rl-html-parser/issues"
+  },
+  "engines": {
+    "node": ">=14.1.0"
+  },
+  "exports": {
+    "import": "./esmodule.mjs",
+    "require": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "src/*.js",
+    "esmodule.mjs"
+  ],
+  "keywords": [
+    "html",
+    "HTML",
+    "parsing",
+    "parser",
+    "html-parser"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
