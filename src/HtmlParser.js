@@ -12,11 +12,12 @@ class HtmlParser {
      */
     static async parse(link, selector = '') {
         const page = await Request.get(link);
+        //console.log(page.slice(page.length - 100, page.length));process.exit()
         if (Request.isHtml(page)) {
             const tags = Process
                 .run(page)
                 .map(string => Tag.fromString(string));
-
+            //console.log(tags);process.exit()
             if (selector) {
                 return this.find(selector, tags);
             }
@@ -35,13 +36,13 @@ class HtmlParser {
      * @returns Tag[]
      */
     static find(selector, tags) {
-        // attribute: {name, value, handler}
-        // tag: tagName
+        /* @return tag: tagName, attribute: {name, value, handler} */
         const parsedSelector = Selector.parseSelectorString(selector);
-
+        //console.log(parsedSelector);process.exit()
         return tags.filter(tag => {
             if (parsedSelector.tag && parsedSelector.tag === tag.getName()) {
-                if (parsedSelector.attribute.name) {
+                // console.log(tag.getName());
+                if (parsedSelector.attribute?.name) {
                     if (parsedSelector.attribute.value && tag.getAttribute(parsedSelector.attribute.name)) {
                         return parsedSelector.attribute.handler(tag.getAttribute(parsedSelector.attribute.name));
                     }

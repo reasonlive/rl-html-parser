@@ -18,13 +18,12 @@ class Request {
     }
 
     static isHtml(data) {
-        return (data.startsWith('<!doctype html') || data.startsWith('<!DOCTYPE HTML'))
-            && data.includes('<html')
-            && data.includes('<head')
-            && data.includes('</head>')
-            && data.includes('<body')
-            && data.includes('</body>')
-            && data.includes('</html>')
+        return data.match(/^<!DOCTYPE HTML/i)
+            //&& data.includes('<head')
+            //&& data.includes('</head>')
+            //&& data.includes('<body')
+            //&& data.includes('</body>')
+            && data.endsWith('</html>')
             ;
     }
 

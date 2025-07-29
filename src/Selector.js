@@ -23,16 +23,20 @@ class Selector {
         const result = {};
         const regexArr = this.getRegex().exec(string);
 
-        if (!string || typeof string !== 'string' || !regexArr) {
+        if (!string || typeof string !== 'string') {
             throw new InputDataError(`Bad selector: ${string}`);
         }
 
-        const tagName = regexArr.input.substring(0, regexArr.index);
-        const attrSlice = regexArr.input.substring(regexArr.index);
-        //console.log(tagName);
-        //console.log(attrSlice);
+        let tagName, attrSlice;
+        if (regexArr) {
+            tagName = regexArr.input.substring(0, regexArr.index);
+            attrSlice = regexArr.input.substring(regexArr.index);
+        }
+        else {
+            tagName = string;
+        }
 
-        switch(attrSlice.charAt(0)){
+        switch (attrSlice?.charAt(0)) {
             case '#':
                 result.attribute = {
                     name: 'id',
@@ -111,7 +115,7 @@ class Selector {
 
         return {
             tag: tagName,
-            attribute: result.attribute
+            attribute: result.attribute ?? null
         }
     }
 }

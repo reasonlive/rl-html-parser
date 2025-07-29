@@ -86,6 +86,8 @@ class Process {
                 }
             }
         }
+
+        //console.log(this.#stringBuffer);process.exit()
     }
 
     static parseNested() {
